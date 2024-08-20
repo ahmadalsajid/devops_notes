@@ -20,17 +20,17 @@ things following https://roadmap.sh/devops
 Get some administration knowledge in some OS. Go with any Linux distro, pick 
 Ubuntu if you have a little no experience with Linux.  
 #### Operating System
-* [Ubuntu](managing_servers/os/ubuntu.md)
-* [Linux](managing_servers/os/linux.md)
+* [Ubuntu](02 Operating System/ubuntu.md)
+* [Linux](02 Operating System/linux.md)
 #### Terminal
-* [Bash Scripting](managing_servers/terminal/bash_scripting.md)
-* [Vim/nano](managing_servers/terminal/vim_nano.md)
-* [Text Manipulation Tools](managing_servers/terminal/text_manipulation_tools.md)
-* [Process Monitoring](managing_servers/terminal/process_monitoring.md)
-* [Network](managing_servers/terminal/network.md)
-* [System Performance](managing_servers/terminal/system_performance.md)
-* [tmux](managing_servers/terminal/tmux.md)
-* [Others](managing_servers/terminal/others.md)
+* [Bash Scripting](03 Terminal Knowledge/bash_scripting.md)
+* [Vim/nano](03 Terminal Knowledge/vim_nano.md)
+* [Text Manipulation Tools](03 Terminal Knowledge/text_manipulation_tools.md)
+* [Process Monitoring](03 Terminal Knowledge/process_monitoring.md)
+* [Network](03 Terminal Knowledge/network.md)
+* [System Performance](03 Terminal Knowledge/system_performance.md)
+* [tmux](03 Terminal Knowledge/tmux.md)
+* [Others](03 Terminal Knowledge/others.md)
 
 ## Networking, Security and Protocols
 * [HTTP](networking_security_protocols/http.md)
