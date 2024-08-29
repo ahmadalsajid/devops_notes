@@ -840,6 +840,137 @@ function func {
 func We are argument
 ```
 
+## trap command
+
+It often comes the situations that you want to catch a special
+signal/interruption/user input in your script to prevent the unpredictables.
+
+Trap is your command to try:
+
+> `trap <arg/function> <signal>`
+
+### Example
+
+```
+#!/bin/bash
+# traptest.sh
+# notice you cannot make Ctrl-C work in this shell, 
+# try with your local one, also remeber to chmod +x 
+# your local .sh file so you can execute it!
+
+trap "echo Booh!" SIGINT SIGTERM
+echo "it's going to run until you hit Ctrl+Z"
+echo "hit Ctrl+C to be blown away!"
+
+while true        
+do
+    sleep 60       
+done
+```
+
+Surely you can substitute the "echo Booh!" with a function:
+
+```
+function booh {
+    echo "booh!"
+}
+```
+
+and call it in trap:
+
+```
+trap booh SIGINT SIGTERM
+```
+
+Some of the common signal types you can trap:
+
+* `SIGINT`: user sends an interrupt signal (Ctrl + C)
+* `SIGQUIT`: user sends a quit signal (Ctrl + D)
+* `SIGFPE`: attempted an illegal mathematical operation
+
+You can check out all signal types by entering the following command:
+
+```
+kill -l
+```
+
+Notice the numbers before each signal name, you can use that number to avoid
+typing long strings in trap:
+
+```
+#2 corresponds to SIGINT and 15 corresponds to SIGTERM
+trap booh 2 15
+```
+
+one of the common usage of trap is to do cleanup temporary files:
+
+```
+trap "rm -f folder; exit" 2
+```
+
+## Files
+
+Often you will want to do some file tests on the file system you are running.
+In this case, shell will provide you with several useful commands to achieve
+it.
+
+The command looks like the following
+
+* `-<command> [filename]`
+* `[filename1] -<command> [filename2]`
+  We will briefly introduce some common commands you might encounter in your
+  daily life.
+
+### Example
+
+use `-e` to test if file exist
+
+```
+#!/bin/bash
+filename="sample.md"
+if [ -e "$filename" ]; then
+    echo "$filename exists as a file"
+fi
+```
+
+use `-d` to test if directory exists
+
+```
+#!/bin/bash
+directory_name="test_directory"
+if [ -d "$directory_name" ]; then
+    echo "$directory_name exists as a directory"
+fi
+```
+
+use `-r` to test if file has read permission for the user running the
+script/test
+
+```
+#!/bin/bash
+filename="sample.md"
+if [ ! -f "$filename" ]; then
+    touch "$filename"
+fi
+if [ -r "$filename" ]; then
+    echo "you are allowed to read $filename"
+else
+    echo "you are not allowed to read $filename"
+fi
+
+if [ -w "$filename" ]; then
+    echo "you are allowed to write $filename"
+else
+    echo "you are not allowed to write $filename"
+fi
+
+if [ -x "$filename" ]; then
+    echo "you are allowed to execute $filename"
+else
+    echo "you are not allowed to execute $filename"
+fi
+```
+
 ## References
 
 * [learnshell.org](https://www.learnshell.org/)
